@@ -76,6 +76,7 @@ include_once("connectDB.php");
                     <th>Date</th>
                     <th>Time In</th>
                     <th>Time Out</th>
+                    <th>Score</th>
                 </tr>
             </thead>
             <tbody class="table-log-body">
@@ -96,10 +97,10 @@ include_once("connectDB.php");
                         <TD><?php echo $row['checkindate']; ?></TD>
                         <TD><?php echo $row['timein']; ?></TD>
                         <TD><?php echo $row['timeout']; ?></TD>
+                        <TD><?php echo $row['scores']; ?></TD>
                     </TR>
                 <?php
                 }
-
                 ?>
             </tbody>
         </table>
