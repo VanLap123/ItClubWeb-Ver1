@@ -14,7 +14,7 @@
              <img class="top-fig-content" src="./image/top.jpg" alt="">
          </div>
          <div class="tree-body">
-             <div class="tree-name">Monthly Event</div>             
+             <div class="tree-name"><strong>Monthly Event</strong></div>             
                 <?php
                     //Display Event with Current Month and default value if there is not enough event
                     include_once("connectDB.php");

@@ -1,8 +1,9 @@
 <body style="background-color:  #0c5774;">
     <style>
         .container {
+            text-align: left;
             display: flex;
-            justify-content: center;
+            /* justify-content: center; */
             margin-top: 50px;
             min-height:400px;
         }
@@ -28,12 +29,15 @@
             width: 100px;
         }
     </style>
-    <div class="container">
-        <div class="content-block">
-            <form method='POST' class="form-search">
+
+    <form method='POST' class="form-search">
+ <input type="text" name="search" style="width: 380px; height: 35px">
+<input class="btn-search-userlist" type="submit" name="search" value="Search" >
+</form>
+
+    <div class="content-block">
                 <label class="lable-date" for="attendantdate">Choose month:</label>
                 <input class="input-search" type="month" id="checkindate" name="checkindate" placeholder="dd-mm-yyyy" value='<?php echo date('Y-m-d'); ?>'>
-                <input class="btn-search-userlist" type="submit" name="search" value="Search">
             </form>
             <?php
             require 'connectDB.php';
@@ -72,7 +76,9 @@
 
                 mysqli_close($conn);
             } else print("0 results");
-            ?>
+            ?> 
+
+            
         </div>
     </div>
     <!-- body -->

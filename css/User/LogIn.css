@@ -227,6 +227,7 @@
   }
   /* error display */
 .error , .pw-error {
+    text-align: left;
     color: red;
      font-size: 16px;
      /* display: none; */

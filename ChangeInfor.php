@@ -101,7 +101,7 @@ if ($_SESSION["id"] != null) {
                 }
                 ?>
             </div>
-            <button type="submit" class="btn-submit" name="btnChangeInfor" id="btnChangeInfor" style="width:200px; background-color:rgb(209, 165, 20)">Change Information</button>
+            <button type="submit" class="btn-submit" name="btnChangeInfor" id="btnChangeInfor" style="width:160px; background-color:rgb(209, 165, 20)">Change Information</button>
         </form>
     </div>
 
