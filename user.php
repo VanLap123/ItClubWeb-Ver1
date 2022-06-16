@@ -50,8 +50,6 @@
                 $year = date("Y");
             }
             $sql = "select * From users_logs  where '$month' = MONTH(checkindate) AND '$year'=YEAR(checkindate) AND '$us'=username";
-
-
             $result = mysqli_query($conn, $sql);
             if (mysqli_num_rows($result) > 0) {
                 echo "<table class=\"center\">
@@ -61,6 +59,7 @@
             <th>Date</th>
             <th>Time In</th>
             <th>Time Out</th>
+            <th>Scores</th>
             </tr>";
                 while ($row = mysqli_fetch_assoc($result)) {
                     echo "<tr>";
@@ -68,10 +67,10 @@
                     echo "<td>" . $row['checkindate'] . "</td>";
                     echo "<td>" . $row['timein'] . "</td>";
                     echo "<td>" . $row['timeout'] . "</td>";
+                    echo "<td>" . $row['scores'] . "</td>";
                     echo "</tr>";
                 }
                 echo "</table>";
-
                 mysqli_close($conn);
             } else print("0 results");
             ?>
