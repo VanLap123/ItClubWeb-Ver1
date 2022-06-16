@@ -15,8 +15,8 @@
     // $sql = "SELECT * FROM users_logs WHERE checkindate=? AND pic_date BETWEEN ? AND ? ORDER BY id ASC";
     include("connectDB.php");
     $date = date("Y-m-d");
-    // $sql = "SELECT * FROM users_logs WHERE checkindate='$date' ORDER BY id DESC";
-    $sql = "SELECT * FROM users_logs ORDER BY id DESC";
+    $sql = "SELECT * FROM users_logs WHERE checkindate='$date' ORDER BY id DESC";
+    //$sql = "SELECT * FROM users_logs ORDER BY id DESC";
     if (isset($_GET['func']) && $_GET['func'] == 'filter') {
       $sql = $_GET['sql'];
       echo $sql;

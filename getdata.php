@@ -40,7 +40,7 @@ if (isset($_GET['card_uid']) && isset($_GET['device_token'])) {
                             if ($row['device_uid'] == $device_uid || $row['device_uid'] == 0) {
                                 $Uname = $row['username'];
                                 $Number = $row['serialnumber'];
-                                $sql = "SELECT * FROM users_logs WHERE card_uid=? AND checkindate=? AND card_out=0";
+                                $sql = "SELECT * FROM users_logs WHERE card_uid=? AND checkindate=? AND scores=0";
                                 $result = mysqli_stmt_init($conn);
                                 if (!mysqli_stmt_prepare($result, $sql)) {
                                     echo "SQL_Error_Select_logs";
@@ -70,17 +70,37 @@ if (isset($_GET['card_uid']) && isset($_GET['device_token'])) {
                                     //*****************************************************
                                     //Logout
                                     else {
-                                        $sql = "UPDATE users_logs SET timeout=?, card_out=1 WHERE card_uid=? AND checkindate=? AND card_out=0";
-                                        $result = mysqli_stmt_init($conn);
-                                        if (!mysqli_stmt_prepare($result, $sql)) {
+                                        $sql = mysqli_query($conn, "SELECT timein
+                                        FROM users_logs
+                                        WHERE username='$Uname'
+                                        ORDER BY id DESC");
+                                        $row = mysqli_fetch_array($sql, MYSQLI_ASSOC);
+
+                                        $timein = $row['timein'];
+                                        $checktimein = date_create($timein); 
+                                        $checktimeout = date_create($t);                                         
+                                        $difference = date_diff($checktimein, $checktimeout); 
+                                        // diff hours
+                                        $difference->h;
+                                        // diff minutes
+                                        $minutes = $difference->days * 24 * 60;
+                                        $minutes += $difference->h * 60;
+                                        $minutes += $difference->i;
+                                        //Checkin time greater than 30 minutes will be check out.
+                                        if ($minutes > 30) 
+                                        {
+                                            $sql = "UPDATE users_logs SET timeout=?,scores =1 WHERE card_uid=? AND checkindate=? AND scores=0";
+                                            $result = mysqli_stmt_init($conn);
+                                            if (!mysqli_stmt_prepare($result, $sql)) {
                                             echo "SQL_Error_insert_logout1";
                                             exit();
-                                        } else {
-                                            mysqli_stmt_bind_param($result, "sss", $t, $card_uid, $d);
-                                            mysqli_stmt_execute($result);
+                                            } else {
+                                                mysqli_stmt_bind_param($result, "sss", $t, $card_uid, $d);
+                                                mysqli_stmt_execute($result);
 
-                                            echo "logout" . $Uname;
-                                            exit();
+                                                echo "logout" . $Uname;
+                                                exit();
+                                            }
                                         }
                                     }
                                 }
