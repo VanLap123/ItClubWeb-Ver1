@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <body>
     <!-- body -->
     <div class="cover-container">
@@ -9,7 +8,6 @@
             <div class="table-head-text">
                 <p>Your Device:</p>
                 <button class="add-divice js-add-device">New Device</button>
-
             </div>
             <div class="table-body">
                 <div class="sub-table">
@@ -89,12 +87,12 @@
                 <div class="de-input">
                     <div class="form-group">
                         <p class="input-label">Device Name:</p>
-                        <input name="devicename" id="devicename" type="text" class="input-box" placeholder="Enter device name please!!!">
+                        <input name="devicename" id="devicename" type="text" class="input-box" placeholder="Enter device name please!!!" required>
                         <p class="error" style="margin-bottom: 0; margin-bottom: 1px;"></p>
                     </div>
                     <div class="form-group">
                         <p class="input-label">Device Department:</p>
-                        <input name="departmentname" id="departmentname" type="text" class="input-box" placeholder="Enter department device name please!!!">
+                        <input name="departmentname" id="departmentname" type="text" class="input-box" placeholder="Enter department device name please!!!" required>
                         <p class="error" style="margin-bottom: 0; margin-bottom: 1px;"></p>
                     </div>
                 </div>
@@ -134,16 +132,17 @@
             event.stopPropagation() //stop nổi bọt
         })
     </script>
-    <script src="./js/validator.js"></script>
+    <!-- Error -->
+    <!-- <script src="./js/validator.js"></script>
     <script>
         Validator({
             form: '#formadd',
             formGroupSelector: '.form-group',
             errorSelector: '.error',
             rules: [
-                Validator.isRequired('#devicename', 'this feild can not empty'),
-                Validator.isRequired('#departmentname', 'this feild can not empty'),
+                Validator.isRequired('#devicename', 'This feild can not empty'),
+                Validator.isRequired('#departmentname', 'This feild can not empty'),
             ],
         });
-    </script>
+    </script> -->
 </body>
