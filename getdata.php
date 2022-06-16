@@ -4,7 +4,7 @@ require 'connectDB.php';
 //date_default_timezone_set('Asia/Damascus');
 date_default_timezone_set('Asia/Ho_Chi_Minh');
 $d = date("Y-m-d");
-$t = date("H:i:sa");
+$t = date("H:i:s");
 
 if (isset($_GET['card_uid']) && isset($_GET['device_token'])) {
 
@@ -75,19 +75,20 @@ if (isset($_GET['card_uid']) && isset($_GET['device_token'])) {
                                         WHERE username='$Uname'
                                         ORDER BY id DESC");
                                         $row = mysqli_fetch_array($sql, MYSQLI_ASSOC);
-
                                         $timein = $row['timein'];
-                                        $checktimein = date_create($timein); 
-                                        $checktimeout = date_create($t);                                         
-                                        $difference = date_diff($checktimein, $checktimeout); 
-                                        // diff hours
+                                    
+                                        $dateTimeIn = date_create($timein); 
+
+                                        $dateTimeOut = date_create($t);
+                                        $difference = date_diff($dateTimeIn, $dateTimeOut); 
                                         $difference->h;
-                                        // diff minutes
+                                        
                                         $minutes = $difference->days * 24 * 60;
                                         $minutes += $difference->h * 60;
                                         $minutes += $difference->i;
+
                                         //Checkin time greater than 30 minutes will be check out.
-                                        if ($minutes > 30) 
+                                        if ($minutes >= 30)
                                         {
                                             $sql = "UPDATE users_logs SET timeout=?,scores =1 WHERE card_uid=? AND checkindate=? AND scores=0";
                                             $result = mysqli_stmt_init($conn);
