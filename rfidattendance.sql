@@ -120,7 +120,7 @@ CREATE TABLE `users` (
   `StudentID` varchar(50) NOT NULL,
   `Department` varchar(30) NOT NULL,
   `github` varchar(50) DEFAULT NULL,
-  `scores` int(11) DEFAULT NULL,
+  `total_scores` int(11) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=110 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -152,7 +152,7 @@ CREATE TABLE `users_logs` (
   `checkindate` date NOT NULL,
   `timein` time NOT NULL,
   `timeout` time NOT NULL,
-  `card_out` tinyint(1) NOT NULL DEFAULT 0,
+  `scores` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=241 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
