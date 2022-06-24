@@ -8,7 +8,7 @@
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <link rel="stylesheet" href="./css/User/event.css">
  </head>
- <body>
+ <body style="background-color:  #0c5774;">
      <div class="skin">
          <div class="fig-top">
              <img class="top-fig-content" src="./image/top.jpg" alt="">
